@@ -1,0 +1,3 @@
+rootProject.name = 'kotlinz2'
+
+include 'kotlinz2-jvm', 'kotlinz2-js'
