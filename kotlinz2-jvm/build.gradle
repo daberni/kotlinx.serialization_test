@@ -17,7 +17,7 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    // compile "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$serialization_version" // WARN: Should not be necessary imho?
+    compile "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$serialization_version"
 
     expectedBy project(":")
 
