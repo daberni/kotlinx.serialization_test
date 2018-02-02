@@ -1,18 +1,27 @@
 import kotlinx.serialization.Mapper
+import kotlinx.serialization.Serializable
 import org.junit.Assert
 import org.junit.Test
 
-class NullMapperTest {
+
+@Serializable
+class NullablePropertyClass {
+
+    var nullable: String? = null
+    var property: String = "Property Value"
+}
+
+class NullablePropertyClassTest {
 
     @Test
     fun testNullableNotNullProperty() {
 
-        val derived = Derived().apply {
+        val derived = NullablePropertyClass().apply {
             nullable = "not null"
         }
 
         val map = Mapper.map(derived)
-        val unmap = Mapper.unmap<Derived>(map)
+        val unmap = Mapper.unmap<NullablePropertyClass>(map)
 
         Assert.assertEquals(derived.nullable, unmap.nullable)
         Assert.assertEquals(derived.property, unmap.property)
@@ -21,12 +30,13 @@ class NullMapperTest {
     @Test
     fun testNullableNullProperty() {
 
-        val derived = Derived()
+        val derived = NullablePropertyClass()
 
         val map = Mapper.map(derived)
-        val unmap = Mapper.unmap<Derived>(map)
+        val unmap = Mapper.unmap<NullablePropertyClass>(map)
 
         Assert.assertEquals(derived.nullable, unmap.nullable)
         Assert.assertEquals(derived.property, unmap.property)
     }
+
 }
